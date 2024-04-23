@@ -16,7 +16,7 @@ export default function Header() {
                 </ul>
                 <ul className='flex gap-4  '>
                     <li> <NavLink to='connexion' className='text-black font-semibold'>SE CONNECTER</NavLink></li>
-                    <li> <NavLink to='creationCompte' className='text-black font-semibold '><button className='bg-indigo-700 text-white w-40 h-8 rounded'>Créer un compte</button></NavLink></li>
+                    <li> <NavLink to='creationCompte' className='text-black font-semibold '><button className='bg-indigo-700 text-white w-40 h-10 rounded'>Créer un compte</button></NavLink></li>
                 </ul>
            </ul>
            <hr />
