@@ -4,7 +4,7 @@ import ELaNGA from '../assets/ELaNGA2.png';
 
 export default function Header() {
     return (
-        <nav className='flex justify-between  p-5 '>
+        <nav className='flex justify-between border-b shadow  p-5 '>
            <ul className='  w-1/2   self-start'>
                 <li > <NavLink to='/'><img src={ELaNGA} alt="logo"   className='w-40 h-20'/></NavLink></li>
            </ul>
@@ -16,7 +16,7 @@ export default function Header() {
                 </ul>
                 <ul className='flex gap-4  '>
                     <li> <NavLink to='connexion' className='text-black font-semibold'>SE CONNECTER</NavLink></li>
-                    <li> <NavLink to='creationCompte' className='text-black font-semibold '><button className='bg-indigo-700 text-white w-40 h-10 rounded'>Créer un compte</button></NavLink></li>
+                    <li className='flex items-start'> <NavLink to='creationCompte' className='text-black font-semibold flex  '><button className='bg-indigo-700 text-white w-40 h-10 rounded'>Créer un compte</button></NavLink></li>
                 </ul>
            </ul>
            <hr />
