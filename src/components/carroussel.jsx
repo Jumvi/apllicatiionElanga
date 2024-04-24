@@ -35,8 +35,8 @@ export default function Carroussel() {
             <img src={tomate} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold'>Budget réalisation : 
                         <span>2500 $</span>
                     </span>
                 </div>
@@ -45,17 +45,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
+                    <p className='font-semibold' >
+                         totale réçue :
                         <span>2500 $</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -66,9 +66,9 @@ export default function Carroussel() {
             <img src={jus} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold' >Budget réalisation :   <span>2500$</span>
+                      
                     </span>
                 </div>
                 <p>
@@ -76,17 +76,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
-                        <span> 3 mois </span>
+                    <p className='font-semibold'>
+                        temps de recolte :
+                        <span>3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -97,9 +97,9 @@ export default function Carroussel() {
             <img src={mais1} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold'>Budget réalisation : 
+                        <span>2500$</span>
                     </span>
                 </div>
                 <p>
@@ -107,17 +107,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -128,9 +128,9 @@ export default function Carroussel() {
             <img src={poivrau} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold'>Budget réalisation : 
+                        <span>2500$</span>
                     </span>
                 </div>
                 <p>
@@ -139,16 +139,16 @@ export default function Carroussel() {
 
                 <div className='flex'>
                     <p>
-                        somme totale réçue :
+                         totale réçue :
                         <span>2500 $</span>
                     </p>
                     <p>
-                        temps de recolte du budget:
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
                     <p>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -159,8 +159,8 @@ export default function Carroussel() {
             <img src={mais} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold'>Budget réalisation : 
                         <span>2500 $</span>
                     </span>
                 </div>
@@ -169,17 +169,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
                     <p>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -190,9 +190,9 @@ export default function Carroussel() {
             <img src={chou} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate à kikwit</span>
+                    <span className='font-semibold'>Budget réalisation : 
+                        <span>2500$</span>
                     </span>
                 </div>
                 <p>
@@ -200,17 +200,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
@@ -221,9 +221,9 @@ export default function Carroussel() {
             <img src={tomate} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate </span>
+                    <span className='font-semibold'>Budget réalisation : 
+                        <span>2500$</span>
                     </span>
                 </div>
                 <p>
@@ -231,17 +231,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes</span>
                     </p>
                 </div>
             </figcaption>
@@ -252,9 +252,9 @@ export default function Carroussel() {
             <img src={tomate} alt="parctomate" />
             <figcaption className='flex flex-col p-6'>
                 <div className='grid grid-cols-2'>
-                    <span>Parc de tomate à kikwit</span>
-                    <span>Budget réalisation : 
-                        <span>2500 $</span>
+                    <span className='font-semibold'>Parc de tomate </span>
+                    <span className='font-semibold'>Budget réalisation : 
+                        <span>2500$</span>
                     </span>
                 </div>
                 <p>
@@ -262,17 +262,17 @@ export default function Carroussel() {
                 </p>
 
                 <div className='flex'>
-                    <p>
-                        somme totale réçue :
-                        <span>2500 $</span>
+                    <p className='font-semibold'>
+                         totale réçue :
+                        <span>2500$</span>
                     </p>
-                    <p>
-                        temps de recolte du budget:
+                    <p className='font-semibold'>
+                        temps de recolte :
                         <span> 3 mois </span>
                     </p>
-                    <p>
+                    <p className='font-semibold'>
                         Réalisation du projet : 
-                        <span>Déjà 3 récoltes réalisées</span>
+                        <span>Déjà 3 récoltes </span>
                     </p>
                 </div>
             </figcaption>
