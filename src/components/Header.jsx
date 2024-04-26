@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import ELaNGA from '../assets/ELaNGA2.png';
+import ELaNGA from '../assets/logoEL.png';
 
 export default function Header() {
     return (
