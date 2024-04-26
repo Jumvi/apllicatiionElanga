@@ -5,9 +5,10 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import Home from './pages/home.jsx';
 import Projects from './pages/projects.jsx';
 import Connexion from './pages/connexion.jsx';
-import CreationCompte from './pages/creationCompte.jsx';
+import Creationcompte from './pages/creationcompte.jsx';
 import CreationProjet from './pages/creationProjet.jsx';
 import Contribuer from './pages/contribuer.jsx';
+import Contact from './pages/contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/creationCompte',
-    element:<CreationCompte/>
+    element:<Creationcompte/>
   },
   {
     path:'creationProjets',
@@ -33,7 +34,13 @@ const router = createBrowserRouter([
   {
     path:'/contribuer',
     element:<Contribuer/>
+  },{
+    
+      path:'/contact',
+      element:<Contact/>
+    
   }
+
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
