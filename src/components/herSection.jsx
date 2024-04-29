@@ -19,11 +19,11 @@ export default function Hersection() {
                     et  prêt à faire épanouir cette passion .Investir en toute sécurité, fiabilité et avoir une garantie sur ses avantages. L’agriculture assure la vraie  indépendance  d’une nation
             </p>
             <div className='flex gap-10'>
-                <button className='rounded w-40 h-10 text-white bg-indigo-700 '>
+                <button className='rounded w-40 h-10 text-white bg-lime-400 '>
                     <Link to='/creationProjets' className='font-bold text-white'>Créer un projet</Link>
                 </button>
-                <button className='rounded w-40 h-10  bg-white outline outline-offset-0 outline-indigo-500  '>
-                    <Link to='/contribuer' className='font-bold text-blue'>Créer un projet</Link>
+                <button className='rounded w-40 h-10  bg-white outline outline-offset-0 outline-lime-400  '>
+                    <Link to='/contribuer' className='font-bold text-lime-400'>Contribuer</Link>
                 </button>
             </div>
         </div>

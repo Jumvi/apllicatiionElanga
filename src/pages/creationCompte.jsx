@@ -15,25 +15,25 @@ export default function CreationCompte() {
 
   return (
     <div className='flex flex-col  m-5'>
-        <div className='flex gap-10  self-center m-20  shadow-2xl '>
-          <div className='self-center '>
-            <img src= {pik} alt="create_acount"  className='w-[20rem]'/>
-            <span className=' '><Link to='/contact' className='text-xl font-semibold text-black m-5'>CONTACTEZ-NOUS</Link></span>
+        <div className='flex gap-10  self-center m-20   '>
+          <div className='self-center flex flex-col '>
+            <img src= {pik} alt="create_acount"  className='w-[30rem]'/>
+            <span className=' '><Link to='/contact' className='text-xl font-semibold text-black m-5 self-center'>CONTACTEZ-NOUS</Link></span>
           </div>
-          <form className=' flex flex-col text-2xl w-[40rem] m-10  bg-indigo-100 shadow-2xl p-6' >
-              <label className='self-center p-2 mb-5 text-xl' >Inscription !</label>
-              <label className='font-normale mb-5 text-xl p-2  rounded w-96 self-center bg-white '>
+          <form className=' flex flex-col text-2xl w-[40rem] m-10 shadow-2xl  p-6' >
+              <label className='self-center p-2 mb-2 text-xl font-semibold' >Inscription !</label>
+              <label className='font-normale border mb-2 p-3 rounded bg-white self-center w-[25rem] mt-10'>
                 Nom <span className='text-red-400'>*</span> : 
                 <input {...register('nom',{required:true})} placeholder='Entrez votre nom' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
                 {errors.nom && <p> name is required.</p>}
               </label>
               
-              <label className='font-normale p-2 text-xl  mb-5 rounded w-96 self-center bg-white' >
+              <label className='font-normale border mb-5 p-3 rounded bg-white self-center w-[25rem] mt-10' >
                   PostNom <span className='text-red-400'>*</span> : 
                   <input {...register('lastName',{required:true})} placeholder='Entrez votre postNom' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
                   {errors.lastName && <p> lastName is required.</p>}
               </label>
-              <label className='font-normale text-xl p-2  mb-5 rounded w-96 self-center bg-white' >
+              <label className='font-normale border mb-2 p-3 rounded bg-white self-center w-[25rem] mt-10' >
                 Mot de passe <span className='text-red-400'>*</span>: 
                 <input
                   {...register('password', {
@@ -49,7 +49,7 @@ export default function CreationCompte() {
                 {errors.password && <p> password is required.</p>}
               </label>
             
-              <label className='font-normale text-xl p-2  mb-5 rounded w-96 self-center bg-white' >
+              <label className='font-normale border mb-3 p-3 rounded bg-white self-center w-[25rem] mt-10' >
                 Email <span className='text-red-400'>*</span>:
                 <input
                   {...register('email', {
@@ -64,7 +64,7 @@ export default function CreationCompte() {
                 />
                 {errors.email && <p> email is required.</p>}
               </label>
-              <label className='font-normale text-xl  mb-5 p-2 rounded w-96 self-center bg-white' >
+              <label className='font-normale border mb-2 p-3 rounded bg-white self-center w-[25rem] mt-10' >
                 Téléphone <span className='text-red-400'>*</span> : 
                 <input
                   {...register('phoneNumber', {
@@ -79,7 +79,7 @@ export default function CreationCompte() {
                 />
                 {errors.phoneNumber && <p> phoneNumber is required.</p>}
               </label>
-              <label className='font-normale text-xl p-2 mb-5 rounded w-96 self-center bg-white' htmlFor="">
+              <label className='font-normale border mb-2 p-3 rounded bg-white self-center w-[25rem] mt-10' >
                 Type <span className='text-red-400'>*</span> :
               <label className='text-sm p-2 font-normal'>
                 <input type="checkbox" {...register('entrepreneur')} className='text-xl p-2 font-normal' />
@@ -90,7 +90,7 @@ export default function CreationCompte() {
                 contributeur
               </label>
            </label>
-            <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-96 h-10 rounded  cursor-pointer self-center mt-10'   />
+            <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-96 h-10 rounded mb-2  cursor-pointer self-center mt-10'   />
           </form>
         </div>
     </div>

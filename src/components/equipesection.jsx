@@ -12,7 +12,7 @@ function Equipesection() {
                   rencontres vos attentes
             </h2>
         </div>
-        <div className='grid grid-cols-3'>
+        <div className='grid grid-cols-3 self-center gap-10'>
             <img src={equ1} alt="Equipe1" />
             <img src={equ2} alt="Equipe2" />
             <img src={equ3} alt="Equipe3" />

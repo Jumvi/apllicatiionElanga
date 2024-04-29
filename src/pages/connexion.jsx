@@ -13,17 +13,17 @@ export default function Connexion() {
     formState : { errors } , 
   }  =  useForm ( ) ;
   return (
-    <div className='p-20'>
-      <div className='  flex justify-between mb-10 '>
+    <div className='p-10'>
+      <div className='  flex justify-between '>
         <div className=' border-solid w-1/2 flex flex-col '>
           <div className='w-[40rem] self-center flex flex-col'>
             <img src={photoUser} alt="" className=' self-center ' />
           </div>
         </div>
-        <div className='w-1/2 flex flex-col'>
-        <div className=' flex flex-col  bg-white   shadow-2xl p-10  w-[40rem] h-[40rem]'>
-        <div className='font-bold text-2xl flex flex-col self-center mt-10 '>
-          <img src={logo} alt="logo " className='w-[15rem] ' />
+        <div className='w-1/2 flex flex-col  '>
+        <div className=' flex flex-col  bg-white   shadow-2xl p-10  w-[40rem] h-[50rem]'>
+        <div className='font-bold  text-2xl flex flex-col self-center mt-10 '>
+          <img src={logo} alt="logo " className='w-[15rem] mb-10 ' />
           <h2 className='font-semibold text-2xl self-center'>S'inscrire</h2>
         </div>
         <form action="" className='flex flex-col'>
@@ -55,7 +55,7 @@ export default function Connexion() {
             />
             {errors.password && <p> password is required.</p>}
           </label>
-          <div className='flex  gap-16 self-center'>
+          <div className='flex  gap-20 self-center mb-10'>
             <label className='text-xl font-normal'>
               <input type="checkbox" {...register('entrepreneur')} className='text-xl font-normal ' /> 
               Remember me
@@ -63,8 +63,8 @@ export default function Connexion() {
             </label>
             <Link to='/' className='underline '>Forgot password?</Link>
           </div>
-          <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-[25rem] h-10 rounded  cursor-pointer self-center mt-10'   />
-          <div className='flex   self-center m-5'>
+          <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-[25rem] h-10 rounded mb-10 cursor-pointer self-center mt-10'   />
+          <div className='flex   self-center mb-10 m-5'>
            <p>Pas encore inscris ?</p> <Link to='/creationcompte' className='underline '>S'inscrire?</Link>
           </div>
         </form>
