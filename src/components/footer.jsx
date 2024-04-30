@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className='bg-black grid grid-cols-3'>
         <div className='grid grid-cols-1'>
-            <img src={logo} alt="logo" className='w-64 h-64' />
+            <img src={logo} alt="logo" className='' />
             <div className='p-5'>
                 <p className='text-white font-normale text-justify'>
                     
@@ -32,9 +32,10 @@ function Footer() {
             </div>
         </div>
         
-            <div className='items-center  w-full mt-40   '>
-                <h2 className='text-white  p-10  '>NOTRE MISSION</h2>
-                <p className='text-white text-justify '>
+            <div className='  flex flex-col  '>
+                <h2 className='text-white  p-10 self-center  '>NOTRE MISSION</h2>
+                <div className='self-center items-center'>
+                <p className='text-white text-justify self '>
                     1. sensibiliser à l’investissement  
                     agricole et  agroalimentaire
                 </p>
@@ -55,6 +56,8 @@ function Footer() {
                     5. consolider le developpement du secteur 
                     vert
                 </p>
+                </div>
+               
             </div>
             <div className='items-center w-full mt-40'>
                 <h2 className='text-white  text-center'>
