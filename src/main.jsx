@@ -5,10 +5,13 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import Home from './pages/home.jsx';
 import Projects from './pages/projects.jsx';
 import Connexion from './pages/connexion.jsx';
-import Creationcompte from './pages/creationcompte.jsx';
 import CreationProjet from './pages/creationProjet.jsx';
 import Contribuer from './pages/contribuer.jsx';
 import Contact from './pages/contact.jsx';
+import CreationCompte from './pages/creationCompte.jsx';
+import OtpVerificationPage from './pages/verificationOtp.jsx';
+import { Provider } from 'react-redux';
+import { store } from '../config/store.js';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/creationCompte',
-    element:<Creationcompte/>
+    element:<CreationCompte/>
   },
   {
     path:'creationProjets',
@@ -39,13 +42,17 @@ const router = createBrowserRouter([
       path:'/contact',
       element:<Contact/>
     
+  },{
+    path:'/otp',
+    element:<OtpVerificationPage/>
   }
 
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router}>
-
-   </RouterProvider>
+   
+      <Provider store={store}> 
+        <RouterProvider router={router}/>
+      </Provider>
   </React.StrictMode>,
 )

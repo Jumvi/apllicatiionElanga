@@ -2,7 +2,6 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/footer';
 import { useForm } from 'react-hook-form';
-import { register } from 'swiper/element';
 import { Link } from 'react-router-dom';
 import pik from '../assets/create.jpg'
 
@@ -12,7 +11,10 @@ export default function CreationCompte() {
     handleSubmit , 
     formState : { errors } , 
   }  =  useForm ( ) ;
-
+ 
+  const submit =(data)=>{
+    console.log(data);
+  }
   return (
     <div className='flex flex-col  m-5'>
         <div className='flex gap-10  self-center m-20   '>
@@ -20,7 +22,7 @@ export default function CreationCompte() {
             <img src= {pik} alt="create_acount"  className='w-[30rem]'/>
             <span className=' '><Link to='/contact' className='text-xl font-semibold text-black m-5 self-center'>CONTACTEZ-NOUS</Link></span>
           </div>
-          <form className=' flex flex-col text-2xl w-[40rem] m-10 shadow-2xl  p-6' >
+          <form className=' flex flex-col text-2xl w-[40rem] m-10 shadow-2xl  p-6' onSubmit={handleSubmit(submit)}>
               <label className='self-center p-2 mb-2 text-xl font-semibold' >Inscription !</label>
               <label className='font-normale border mb-2 p-3 rounded bg-white self-center w-[25rem] mt-10'>
                 Nom <span className='text-red-400'>*</span> : 

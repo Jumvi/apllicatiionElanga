@@ -1,17 +1,61 @@
-import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/footer';
+import React, { useState,useEffect } from 'react'
 import photoUser from '../assets/conneximg.jpg'
 import logo from '../assets/logoEL.png'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import { setUserMail } from '../../config/slicer';
+import { useDispatch } from 'react-redux';
 
 export default function Connexion() {
-  const    { 
-    register , 
-    handleSubmit , 
-    formState : { errors } , 
-  }  =  useForm ( ) ;
+  const { 
+    register, 
+    handleSubmit, 
+    setValue,
+    formState: { errors }, 
+    reset 
+  } = useForm();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Navigate = useNavigate(); 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('email');
+    const savedPassword = localStorage.getItem('password');
+    if (savedEmail) setValue('email', savedEmail);
+    if (savedPassword) setValue('password', savedPassword);
+  }, [setValue]);
+
+  const api = 'http://localhost:3000/login';
+
+  const submit = async(data) => {
+    setEmail(data.email);
+    setPassword(data.password);
+    try {
+      const response = await axios.post(api, { email, password });
+      const { success, message} = response.data;
+      if (success === true) {
+        reset();
+        dispatch(setUserMail(email));
+        if (data.rememberMe) {
+          localStorage.setItem('email', data.email);
+          localStorage.setItem('password', data.password);
+        } else {
+          localStorage.removeItem('email');
+          localStorage.removeItem('password');
+        }
+        Navigate('/otp'); 
+      } else {
+        console.error('erreur');
+      }
+    } catch (error) {
+      console.log('erreur lors de la connexion de l\'utilisateur', error);
+    }
+  }
+
+
+
   return (
     <div className='p-10'>
       <div className='  flex justify-between '>
@@ -26,7 +70,7 @@ export default function Connexion() {
           <img src={logo} alt="logo " className='w-[15rem] mb-10 ' />
           <h2 className='font-semibold text-2xl self-center'>S'inscrire</h2>
         </div>
-        <form action="" className='flex flex-col'>
+        <form action="" className='flex flex-col' onSubmit={handleSubmit(submit)}>
           <label className='font-normale border mb-10 p-3 rounded bg-white self-center w-[25rem] mt-10' >
               <input
                 {...register('email', {
@@ -37,6 +81,7 @@ export default function Connexion() {
                   }
                 })}
                 placeholder='Enter your mail'
+                autoComplete='off'
                 className=' font-normal focus:outline-none  rounded-md text-2xl '
               />
               {errors.email && <p> email is required.</p>}
@@ -52,12 +97,13 @@ export default function Connexion() {
               })}
               placeholder='Enter your password'
               className='font-normal focus:outline-none  rounded-md text-2xl'
+              autoComplete='off'
             />
             {errors.password && <p> password is required.</p>}
           </label>
           <div className='flex  gap-20 self-center mb-10'>
             <label className='text-xl font-normal'>
-              <input type="checkbox" {...register('entrepreneur')} className='text-xl font-normal ' /> 
+              <input type="checkbox" {...register('rememberMe')} className='text-xl font-normal ' /> 
               Remember me
              
             </label>
