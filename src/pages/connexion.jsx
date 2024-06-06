@@ -107,7 +107,7 @@ export default function Connexion() {
               Remember me
              
             </label>
-            <Link to='/' className='underline '>Forgot password?</Link>
+            <Link to='/forgot-password' className='underline '>Forgot password?</Link>
           </div>
           <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-[25rem] h-10 rounded mb-10 cursor-pointer self-center mt-10'   />
           <div className='flex   self-center mb-10 m-5'>

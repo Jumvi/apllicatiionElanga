@@ -12,6 +12,8 @@ import CreationCompte from './pages/creationCompte.jsx';
 import OtpVerificationPage from './pages/verificationOtp.jsx';
 import { Provider } from 'react-redux';
 import { store } from '../config/store.js';
+import ForgotPassword from './pages/forgotPassword.jsx';
+import ResetPassword from './pages/resetPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,12 +47,17 @@ const router = createBrowserRouter([
   },{
     path:'/otp',
     element:<OtpVerificationPage/>
+  },{
+    path:'/forgot-password',
+    element:<ForgotPassword/>
+  },{
+    path:'/reset-password',
+    element:<ResetPassword/>
   }
 
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   
       <Provider store={store}> 
         <RouterProvider router={router}/>
       </Provider>
