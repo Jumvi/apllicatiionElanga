@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import ELaNGA from '../assets/logoEL.png';
+import UserMenu from './userMenu';
 
 export default function Header() {
     return (
@@ -17,6 +18,9 @@ export default function Header() {
                     <li className='flex  items-center'> <NavLink to='creationCompte' className='text-black font-semibold flex  '><button className='bg-lime-400 text-white w-40 h-10 rounded'>Créer un compte</button></NavLink></li>
                 </ul>
            </ul>
+           <div className='flex items-center'>
+                <UserMenu/>
+           </div>
         </nav>
     )
 }

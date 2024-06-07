@@ -4,8 +4,9 @@ import logo from '../assets/logoEL.png'
 import { useForm } from 'react-hook-form';
 import { Link ,useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import { setUserMail } from '../../config/slicer';
+import { setUserMail,saveUser } from '../../config/slicer';
 import { useDispatch } from 'react-redux';
+
 
 export default function Connexion() {
   const { 
@@ -19,6 +20,7 @@ export default function Connexion() {
   const [password, setPassword] = useState("");
   const Navigate = useNavigate(); 
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('email');
@@ -34,7 +36,9 @@ export default function Connexion() {
     setPassword(data.password);
     try {
       const response = await axios.post(api, { email, password });
-      const { success, message} = response.data;
+      const { success,user} = response.data;
+      dispatch(saveUser(user));
+      localStorage.setItem('user',JSON.stringify(user));
       if (success === true) {
         reset();
         dispatch(setUserMail(email));

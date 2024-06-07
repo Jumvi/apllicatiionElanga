@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import './index.css';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import Home from './pages/home.jsx';
-import Projects from './pages/projects.jsx';
 import Connexion from './pages/connexion.jsx';
 import CreationProjet from './pages/creationProjet.jsx';
 import Contribuer from './pages/contribuer.jsx';
@@ -20,10 +19,10 @@ const router = createBrowserRouter([
     path:'/',
     element:<Home/>
   },
-  {
-    path:'/projects',
-    element:<Projects/>
-  },
+  // {
+  //   path:'/projects',
+  //   element:<Project/>
+  // },
   {
     path:'/connexion',
     element:<Connexion/>
