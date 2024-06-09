@@ -1,21 +1,45 @@
-import React , {useState}from 'react';
+import React, { useState } from 'react';
 import pik from '../assets/projet.jpg';
 import { useForm } from 'react-hook-form';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { GoogleMap,LoadScript } from '@react-google-maps/api';
+import axios from 'axios';
 
 export default function CreationProjet() {
-  const [address, setAddress] = useState('');
 
-   const handleChange = address => {
-    setAddress(address);
-  };
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  
+  const api = 'http://localhost:3000/projects';
+
  
-  const    { 
-    register , 
-    handleSubmit , 
-    formState : { errors } , 
-  }  = useForm();
+  const submit = async(data) => {
+    const formData = new FormData();
+    formData.append('titre', data.titre);
+    formData.append('categorie', data.categorie);
+    formData.append('duree', data.duree);
+    formData.append('image', data.image[0]);
+    formData.append('recompense', data.recompense);
+    formData.append('risque', data.risque);
+    formData.append('description', data.description);
+    formData.append('pdfProjet', data.pdfProjet[0]);
+    formData.append('localisation', data.localisation[0]);
+    formData.append('id',user.id);
+    
+
+    try {
+      const response = await axios.post(api, formData);
+      const { success, projet } = response.data;
+
+      if (success !== true) {
+        alert('Erreur lors de la création du projet');
+      }
+
+      localStorage.setItem('projet', projet);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  }
 
   return (
     <div className='flex flex-col p-10'>
@@ -24,61 +48,61 @@ export default function CreationProjet() {
           <img src={pik} alt="projet" className='w-[50rem]' />
         </div>
         <div className='w-1/2 p-4'>
-          <form className='flex flex-col shadow-lg p-5 ' >
-              <label className='font-normale mb-5 text-xl p-2 border rounded  w-[33rem] self-center bg-white '>
-                  Titre <span className='text-red-400'>*</span> : 
-                  <input {...register('titre',{required:true})} placeholder='Entrez votre nom' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.titre && <p> name is required.</p>}
+          <form className='flex flex-col shadow-lg p-5' onSubmit={handleSubmit(submit)}>
+            <label className='font-normal mb-5 text-xl p-2 border rounded w-[33rem] self-center bg-white'>
+              Titre <span className='text-red-400'>*</span>:
+              <input {...register('titre', { required: true })} placeholder='Entrez le titre' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
+              {errors.titre && <p>Le titre est requis.</p>}
+            </label>
+            <label className='font-normal mb-5 text-xl w-[33rem] self-center'>
+              Catégorie:
+              <label className='text-sm p-2 font-normal'>
+                <input type="radio" {...register('categorie')} value="agricole" autoComplete='off'/>
+                Agricole
               </label>
-              <label className='font-normale mb-5 text-xl w-[33rem]    self-center '>
-                  Catégorie :
-                  <label className='text-sm p-2 font-normal '>
-                    <input type="checkbox" {...register('agricole')} className='text-xl font-normal'/>
-                    Agricole
-                  </label>
-                  <label className='text-sm p-2 font-normal '>
-                    <input type="checkbox" {...register('agroalimentaire')} className='text-xl font-normal'/>
-                    Agroalimentaire
-                  </label>
-               </label>
-              <label className='font-normale mb-5 border text-xl p-2  rounded w-[33rem] self-center bg-white '>
-                  Durée recolte <span className='text-red-400'>*</span> : 
-                  <input {...register('duree',{required:true})} placeholder='Entrez votre nom' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.duree && <p> name is required.</p>}
+              <label className='text-sm p-2 font-normal'>
+                <input type="radio" {...register('categorie')} value="agroalimentaire" autoComplete='off'/>
+                Agroalimentaire
               </label>
-              <label className='font-normale mb-5 text-xl p-2 border  rounded w-[33rem] self-center bg-white '>
-                 localisation <span className='text-red-400'>*</span> : 
-                 <LoadScript
-                 >
-                 </LoadScript>  
-              </label>
-              <label className='font-normale mb-5 text-xl w-[33rem]  self-center  '>
-                  Image projet <span className='text-red-400'>*</span> : 
-                  <input type='file' {...register('imageProjet',{required:true})} placeholder='choisir une image' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.imageProjet && <p> image is required.</p>}
-              </label>
-              <label className='font-normale mb-5 text-xl p-2 border  rounded w-[33rem] self-center bg-white '>
-                 Recompense contributeur <span className='text-red-400'>*</span> : 
-                  <input {...register('recompense',{required:true})} placeholder='Entrez la déscription de la récompense' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.recompense && <p> recompense is required.</p>}
-              </label>
-              <label className='font-normale mb-5 text-xl p-2 w-[33rem]  self-center  '>
-                Risque et defis du projet <span className='text-red-400'>*</span> : 
-                  <input type='file' {...register('risque',{required:true})} placeholder='Entrez les risques et defis' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.risque && <p> risque is required.</p>}
-              </label>
-              <label className='font-normale mb-5 text-xl p-2  w-[33rem] self-center  '>
-                Auteur du projet <span className='text-red-400'>*</span> : 
-                  <input type='file' {...register('auteur',{required:true})} placeholder='Entrez fichier auteur' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.auteur && <p> auteur is required.</p>}
-              </label>
-              <label className='font-normale mb-5 text-xl p-2  w-[33rem] self-center '>
-                Projet en pdf <span className='text-red-400'>*</span> : 
-                  <input type='file' {...register('projet',{required:true})} placeholder='Entrez fichier projet' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
-                  {errors.projet && <p> projet is required.</p>}
-              </label>
-              <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-[33rem] h-10 mb-5 rounded  cursor-pointer self-center mt-10'   />
-              
+            </label>
+            <label className='font-normal mb-5 border text-xl p-2 rounded w-[33rem] self-center bg-white'>
+              Durée récolte <span className='text-red-400'>*</span>:
+              <input {...register('duree', { required: true })} placeholder='Entrez la durée' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
+              {errors.duree && <p>La durée est requise.</p>}
+            </label>
+            <label className='font-normal mb-5 text-xl p-2 border rounded w-[33rem] self-center bg-white'>
+              Localisation <span className='text-red-400'>*</span>:
+              <input
+                {...register('localisation',{required:true})}
+                placeholder='Entrez la localisation'
+                className='text-sm p-2 font-normal focus:outline-none rounded-md'
+              autoComplete='off'/>
+            </label>
+            <label className='font-normal mb-5 text-xl w-[33rem] self-center'>
+              Image projet <span className='text-red-400'>*</span>:
+              <input type='file' {...register('image', { required: true })} className='text-sm p-2 font-normal focus:outline-none rounded-md' />
+              {errors.image && <p>L'image est requise.</p>}
+            </label>
+            <label className='font-normal mb-5 text-xl p-2 border rounded w-[33rem] self-center bg-white'>
+              Récompense contributeur <span className='text-red-400'>*</span>:
+              <input {...register('recompense', { required: true })} placeholder='Entrez la description de la récompense' className='text-sm p-2 font-normal focus:outline-none rounded-md' />
+              {errors.recompense && <p>La récompense est requise.</p>}
+            </label>
+            <label className='font-normal mb-5 text-xl w-[33rem] self-center'>
+              Risque et défis du projet <span className='text-red-400'>*</span>:
+              <input type='file' {...register('risque', { required: true })} className='text-sm p-2 font-normal focus:outline-none rounded-md' />
+              {errors.risque && <p>Le fichier des risques est requis.</p>}
+            </label>
+            <label className='font-normal mb-5 text-xl p-2 w-[33rem] self-center'>
+              Description:
+              <textarea {...register('description')} placeholder='Entrez la description du projet' className='text-sm p-2 font-normal focus:outline-none rounded-md' />
+            </label>
+            <label className='font-normal mb-5 text-xl p-2 w-[33rem] self-center'>
+              Projet en PDF <span className='text-red-400'>*</span>:
+              <input type='file' {...register('pdfProjet', { required: true })} className='text-sm p-2 font-normal focus:outline-none rounded-md' />
+              {errors.pdfProjet && <p>Le fichier PDF du projet est requis.</p>}
+            </label>
+            <input type="submit" placeholder='Envoyer' className='bg-lime-400 text-white w-[33rem] h-10 mb-5 rounded cursor-pointer self-center mt-10' />
           </form>
         </div>
       </div>
