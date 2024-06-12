@@ -4,11 +4,13 @@ import { NavLink, json } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { useSelector,useDispatch } from 'react-redux';
 import { saveUser,clearUser } from '../../config/slicer';
+import { checkIsDisconnect } from '../../config/slicer';
 
 const UserMenu = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const { handleSubmit } = useForm();
     const user = useSelector((state)=>state.auth.user);
+   
     
     const dispatch = useDispatch();
 
@@ -30,7 +32,10 @@ const UserMenu = () => {
     };
 
     const handleLogout = () => {
+       
+        setDropdownOpen(!dropdownOpen);
         dispatch(clearUser());
+        dispatch(checkIsDisconnect())
     };
 
     return (

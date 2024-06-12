@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useForm} from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { checkConnect } from '../../config/slicer';
 
 
 const OtpVerificationPage = () => {
@@ -11,7 +12,7 @@ const OtpVerificationPage = () => {
   const [apiToken,setApiToken] = useState("");
   const Navigate = useNavigate();
   const email =useSelector((state)=>state.auth.email);
-  
+  const dispatch = useDispatch();  
 
   const api = 'http://localhost:3000/login/verify-acount';
 
@@ -24,6 +25,7 @@ const OtpVerificationPage = () => {
       if (success) {
         setMessage(message);
         localStorage.setItem('token',apiToken);
+        dispatch(checkConnect());       
         Navigate('/');
         // Rediriger l'utilisateur vers une autre page ou afficher un message de succès
       } else {

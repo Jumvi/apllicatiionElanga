@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 let initialUser = null;
 const storedUser = localStorage.getItem('user');
 
+
 if (storedUser) {
   try {
     initialUser = JSON.parse(storedUser);
@@ -18,6 +19,7 @@ const authSlice = createSlice({
     email: '',
     token: '',
     user: initialUser,
+    isConnect:null
   },
   reducers: {
     setUserMail: (state, action) => {
@@ -39,8 +41,18 @@ const authSlice = createSlice({
       state.user = null;
       localStorage.removeItem('user');
     },
+
+    checkConnect:(state)=>{
+      state.isConnect = true;
+      localStorage.setItem('isConnect',true);
+    },
+      checkIsDisconnect:(state)=>{
+        state.isConnect = false;
+        localStorage.setItem('isConnect',false)
+      }
+    
   },
 });
 
-export const { setUserMail, setToken, clearToken, saveUser, clearUser } = authSlice.actions;
+export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect} = authSlice.actions;
 export default authSlice.reducer;
