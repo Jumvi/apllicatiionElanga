@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function CreationProjet() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -20,10 +20,11 @@ export default function CreationProjet() {
     formData.append('duree', data.duree);
     formData.append('image', data.image[0]);
     formData.append('recompense', data.recompense);
-    formData.append('risque', data.risque);
+    formData.append('risque', data.risque[0]);
     formData.append('description', data.description);
     formData.append('pdfProjet', data.pdfProjet[0]);
-    formData.append('localisation', data.localisation[0]);
+    formData.append('localisation', data.localisation);
+    formData.append('budget', data.budget);
     formData.append('id',user.id);
     
 
@@ -36,6 +37,8 @@ export default function CreationProjet() {
       }
 
       localStorage.setItem('projet', projet);
+      reset()
+      
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -54,6 +57,11 @@ export default function CreationProjet() {
               <input {...register('titre', { required: true })} placeholder='Entrez le titre' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
               {errors.titre && <p>Le titre est requis.</p>}
             </label>
+            <label className='font-normal mb-5 text-xl p-2 border rounded w-[33rem] self-center bg-white'>
+              Budget <span className='text-red-400'>*</span>:
+              <input  {...register('budget', { required: true })} placeholder=' budget du projet en dollars' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
+              {errors.titre && <p>Le Budget est requis.</p>}
+            </label>
             <label className='font-normal mb-5 text-xl w-[33rem] self-center'>
               Catégorie:
               <label className='text-sm p-2 font-normal'>
@@ -66,8 +74,8 @@ export default function CreationProjet() {
               </label>
             </label>
             <label className='font-normal mb-5 border text-xl p-2 rounded w-[33rem] self-center bg-white'>
-              Durée récolte <span className='text-red-400'>*</span>:
-              <input {...register('duree', { required: true })} placeholder='Entrez la durée' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
+              Durée  <span className='text-red-400'>*</span>:
+              <input {...register('duree', { required: true })} placeholder='durée totale des traveaux de la mise en place' className='text-sm p-2 font-normal focus:outline-none rounded-md' autoComplete='off' />
               {errors.duree && <p>La durée est requise.</p>}
             </label>
             <label className='font-normal mb-5 text-xl p-2 border rounded w-[33rem] self-center bg-white'>

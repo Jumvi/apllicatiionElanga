@@ -28,10 +28,6 @@ export default function Contribuer() {
                   <input {...register('Montant',{required:true})} placeholder='Entrez votre Montant' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />
                   {errors.Montant && <p> name is required.</p>}
               </label>
-              <label className='font-normale mb-5 text-xl p-2  rounded w-[33rem] self-center border rounded'>
-                 localisation <span className='text-red-400'>*</span> : 
-                  
-              </label>
               <label className='font-normale mb-5 text-xl p-2  rounded w-[33rem] self-center border rounded '>
                   Banque de préférence <span className='text-red-400'>*</span> : 
                   <input  {...register('Banque',{required:true})} placeholder='Entrer la banque' className='text-sm p-2 font-normal focus:outline-none  rounded-md p-2' />

@@ -1,285 +1,84 @@
-import React from 'react'
-import { Swiper,SwiperSlide } from 'swiper/react';
-import { Navigation,Pagination,FreeMode } from 'swiper/modules';
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
-import chou from '../assets/culturechou.jpg';
-import mais from '../assets/culturemais2.jpg';
-import poivrau from '../assets/culturepoivreau.jpg';
-import mais1 from '../assets/parcmais.jpg';
-import tomate from '../assets/projettomate.jpg';
-import jus from '../assets/usinejus.jpg';
+import axios from 'axios';
 
 export default function Carroussel() {
+    const [projects, setProjects] = useState([]);
 
-  return (
-    <div className='relative'>
-   <Swiper breakpoints={{340:{
-    slidesPerView:3,
-    spaceBetween:30
-   },
-   700:{
-    slidesPerView:3,
-    spaceBetween:30
-   } }} 
-   freeMode = {true}   
-   navigation ={true} 
-   pagination={{clickable:true}}
-    scrollbar={{draggable:true}}
-    modules={FreeMode,Pagination}>
+    const apiUrl = 'http://localhost:3000/projects';
 
-    <SwiperSlide>
-        <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={tomate} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b  '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500 $</span>
-                    </span>
-                </div>
-                <p className='border-b border-black'>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(apiUrl);
+                setProjects(response.data);
+            } catch (error) {
+                console.error('Error fetching data', error);
+            }
+        };
 
-                <div className='flex'>
-                    <p className='font-semibold' >
-                         totale réçue :
-                        <span>2500 $</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={jus} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold' >Budget réalisation :   <span>2500$</span>
-                      
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
+        fetchData();
+    }, []);
 
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span>3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={mais1} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500$</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer border'>
-            <img src={poivrau} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500$</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p>
-                         totale réçue :
-                        <span>2500 $</span>
-                    </p>
-                    <p>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={mais} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500 $</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col  shadow-lg runded cursor-pointer'>
-            <img src={chou} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate à kikwit</span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500$</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={tomate} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate </span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500$</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes</span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-    <SwiperSlide>
-    <figure className='flex flex-col group relative shadow-lg runded cursor-pointer'>
-            <img src={tomate} alt="parctomate" />
-            <figcaption className='flex flex-col p-6'>
-                <div className='grid grid-cols-2 border-black border-b '>
-                    <span className='font-semibold'>Parc de tomate </span>
-                    <span className='font-semibold'>Budget réalisation : 
-                        <span>2500$</span>
-                    </span>
-                </div>
-                <p className='border-black border-b '>
-                    Découvrez notre fier parc de culture de tomates niché à Sonabata, s'étendant sur 4 hectares de terre fertile. Avec une capacité de production impressionnante de 20 tonnes par an, notre projet promet de fournir des tomates savoureuses et de qualité supérieure. Grâce à des méthodes agricoles innovantes et durables, nous cultivons avec passion pour répondre à la demande croissante de produits frais et locaux. Soutenez notre initiative sur la plateforme de crowdfunding agricole et participez à la croissance d'une agriculture responsable et florissante
-                </p>
-
-                <div className='flex'>
-                    <p className='font-semibold'>
-                         totale réçue :
-                        <span>2500$</span>
-                    </p>
-                    <p className='font-semibold'>
-                        temps de recolte :
-                        <span> 3 mois </span>
-                    </p>
-                    <p className='font-semibold'>
-                        Réalisation du projet : 
-                        <span>Déjà 3 récoltes </span>
-                    </p>
-                </div>
-            </figcaption>
-        </figure>
-    </SwiperSlide>
-   </Swiper>
-  
-   </div>
-  )
+    return (
+        <div className='relative p-4 bg-gray-100'>
+            <Swiper
+                breakpoints={{
+                    340: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    700: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    }
+                }}
+                freeMode={true}
+                navigation={true}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                modules={[FreeMode, Pagination, Navigation]}
+                className="mySwiper"
+            >
+                {projects.map((project) => (
+                    <SwiperSlide key={project.id} className="flex justify-center">
+                        <figure className='flex flex-col group relative shadow-lg rounded-lg cursor-pointer bg-white w-full max-w-sm'>
+                            <img src={project.image} alt="project" className='w-full h-48 object-cover rounded-t-lg' />
+                            <figcaption className='flex flex-col p-6'>
+                                <div className='grid grid-cols-1 gap-2 border-black border-b pb-2'>
+                                    <span className='font-semibold'>{project.titre}</span>
+                                    <span className='font-semibold'>
+                                        Budget réalisation : <span>{project.budget} $</span>
+                                    </span>
+                                </div>
+                                <p className='border-b border-black py-2 text-justify line-clamp-10'>
+                                    {project.description}
+                                </p>
+                                <div className='flex flex-col mt-2 space-y-2'>
+                                    <p className='font-semibold'>
+                                        Totale reçue : <span>{project.totalRecu} $</span>
+                                    </p>
+                                    <p className='font-semibold'>
+                                        Temps de récolte : <span>{project.duree} mois</span>
+                                    </p>
+                                    <p className='font-semibold'>
+                                        Réalisation du projet : <span>{project.realisation}</span>
+                                    </p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
+    );
 }
