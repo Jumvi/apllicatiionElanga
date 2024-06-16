@@ -12,7 +12,7 @@ export default function Connexion() {
   const { 
     register, 
     handleSubmit, 
-    setValue,
+    setValue, 
     formState: { errors }, 
     reset 
   } = useForm();
