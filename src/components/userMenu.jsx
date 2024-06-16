@@ -45,7 +45,7 @@ const UserMenu = () => {
         user.profilImage ? (
             <>
                 <span>{user.nom}</span>
-                <img src={user.profilImage} alt="" className="w-10 h-10 rounded-full" />
+                <img src={user.profilImage ? `http://localhost:3000/${user.profilImage}` : '/default_image.png'} alt="" className="w-10 h-10 rounded-full" />
             </>
         ) : (
             <>
