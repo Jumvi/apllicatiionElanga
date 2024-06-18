@@ -13,16 +13,17 @@ import { Provider } from 'react-redux';
 import { store } from '../config/store.js';
 import ForgotPassword from './pages/forgotPassword.jsx';
 import ResetPassword from './pages/resetPassword.jsx';
+import Profil from './pages/profil.jsx';
 
 const router = createBrowserRouter([
   {
     path:'/',
     element:<Home/>
   },
-  // {
-  //   path:'/projects',
-  //   element:<Project/>
-  // },
+  {
+    path:'/profil',
+    element:<Profil/>
+  },
   {
     path:'/connexion',
     element:<Connexion/>

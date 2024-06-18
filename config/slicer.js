@@ -19,7 +19,8 @@ const authSlice = createSlice({
     email: '',
     token: '',
     user: initialUser,
-    isConnect:null
+    isConnect:null,
+    projet:''
   },
   reducers: {
     setUserMail: (state, action) => {
@@ -49,10 +50,19 @@ const authSlice = createSlice({
       checkIsDisconnect:(state)=>{
         state.isConnect = false;
         localStorage.setItem('isConnect',false)
+      }, 
+      addprojet:(state,action)=>{
+        state.projet =action.payload;
+        localStorage.setItem('project', action.payload);
+      },
+
+      delProject:(state)=>{
+        state.projet = '';
+        localStorage.removeItem('project');
       }
     
   },
 });
 
-export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect} = authSlice.actions;
+export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect,addprojet,delProject} = authSlice.actions;
 export default authSlice.reducer;

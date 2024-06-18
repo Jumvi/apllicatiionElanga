@@ -1,38 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
-import axios from 'axios';
 
-export default function Carroussel() {
-    const [projects, setProjects] = useState([]);
-    const [expanded, setExpanded] = useState({});
-
-    const apiUrl = 'http://localhost:3000/projects';
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(apiUrl);
-                setProjects(response.data);
-                console.log(response.data); 
-            } catch (error) {
-                console.error('Error fetching data', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    const toggleReadMore = (id) => {
-        setExpanded((prevState) => ({
-            ...prevState,
-            [id]: !prevState[id],
-        }));
-    };
+export default function Carroussel({project}) {
+  
+    if(!project){
+        return ('Chargement....')
+    }
 
     return (
         <div className='relative p-4 '>
@@ -58,7 +36,7 @@ export default function Carroussel() {
                 modules={[FreeMode, Pagination, Navigation]}
                 className="mySwiper"
             >
-                {projects.map((project) => (
+                {project.map((project) => (
                     <SwiperSlide key={project.id} className="flex justify-center">
                         <figure className='flex flex-col group relative shadow-lg rounded-lg cursor-pointer  w-full max-w-sm'>
                             <img 
@@ -73,9 +51,9 @@ export default function Carroussel() {
                                         Budget réalisation : <span>{project.budget} $</span>
                                     </span>
                                 </div>
-                                <p className={`border-b border-black py-2 text-justify ${expanded[project.id] ? '' : 'line-clamp-10'}`}>
+                                {/* <p className={`border-b border-black py-2 text-justify ${expanded[project.id] ? '' : 'line-clamp-10'}`}>
                                     {project.description.split('').length < 10}
-                                </p>
+                                </p> */}
                                 {/* {project.description.split(' ').length <10 && (
                                     <button 
                                         className="text-blue-500 mt-2" 
