@@ -16,6 +16,9 @@ import ResetPassword from './pages/resetPassword.jsx';
 import Profil from './pages/profil.jsx';
 import Projects from './pages/projects.jsx';
 import Agricole from './pages/agricole.jsx';
+import Agroalimentaire from './pages/agroalimentaire.jsx';
+import { Path } from 'leaflet';
+import ProjectDetails from './pages/projectDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,17 @@ const router = createBrowserRouter([
   },{
     path:'/agricole',
     element:<Agricole/>
+  },{
+    path:'/agroalimentaire',
+    element:<Agroalimentaire/>
+  },{
+    path:'details-project',
+    children:[
+      {
+        path:':id',
+        element:<ProjectDetails/>
+      }
+    ]
   }
 
 ])
