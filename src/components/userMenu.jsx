@@ -35,7 +35,8 @@ const UserMenu = () => {
        
         setDropdownOpen(!dropdownOpen);
         dispatch(clearUser());
-        dispatch(checkIsDisconnect())
+        dispatch(checkIsDisconnect());
+        handleToggleDropdown()
     };
 
     return (
@@ -54,9 +55,7 @@ const UserMenu = () => {
         )
     ) : (
         <>
-            {/* Si vous souhaitez afficher quelque chose quand il n'y a pas d'utilisateur
-            <FaUserCircle className="w-6 h-6" />
-            <span>User</span> */}
+           
         </>
     )}
 </button>
