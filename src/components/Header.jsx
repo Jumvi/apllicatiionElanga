@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
     const isConnect =useSelector((state)=>state.auth.isConnect);
-    console.log(isConnect);
     
     return (
         <nav className='flex justify-between border-b shadow p-4 '>

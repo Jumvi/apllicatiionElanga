@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addprojet } from '../../config/slicer';
 
 
+
 function Ourprojects() {
   const [projects, setProjects] = useState([]);
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Ourprojects() {
             try {
                 const response = await axios.get(apiUrl);
                 setProjects([...response.data]);
+                localStorage.setItem('projet',response.data);
                 dispatch(addprojet(response.data));
                 
             } catch (error) {
@@ -26,8 +28,6 @@ function Ourprojects() {
 
         fetchData();
     }, []);
-
-  console.log(projects);
 
   return (
     <section className='p-20'>
