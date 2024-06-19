@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { act } from 'react';
 
 let initialUser = null;
 const storedUser = localStorage.getItem('user');
@@ -53,7 +54,7 @@ const authSlice = createSlice({
       }, 
       addprojet:(state,action)=>{
         state.projet =action.payload;
-        localStorage.setItem('project', action.payload);
+        localStorage.setItem('project',action.payload);
       },
 
       delProject:(state)=>{
