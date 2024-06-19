@@ -14,6 +14,8 @@ import { store } from '../config/store.js';
 import ForgotPassword from './pages/forgotPassword.jsx';
 import ResetPassword from './pages/resetPassword.jsx';
 import Profil from './pages/profil.jsx';
+import Projects from './pages/projects.jsx';
+import Agricole from './pages/agricole.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,12 @@ const router = createBrowserRouter([
   },{
     path:'/reset-password',
     element:<ResetPassword/>
+  },{
+    path:'/projects',
+    element:<Projects/>
+  },{
+    path:'/agricole',
+    element:<Agricole/>
   }
 
 ])
