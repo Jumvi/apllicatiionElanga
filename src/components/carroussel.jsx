@@ -5,8 +5,15 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
+import { useNavigate } from 'react-router-dom';
 
 export default function Carroussel({project}) {
+
+    const navigation = useNavigate();
+
+   const hundleClik = (id)=>{
+        navigation(`/details-project/${id}`);
+   }
   
     if(!project){
         return ('Chargement....')
@@ -37,7 +44,7 @@ export default function Carroussel({project}) {
                 className="mySwiper"
             >
                 {project.map((project) => (
-                    <SwiperSlide key={project.id} className="flex justify-center">
+                    <SwiperSlide key={project.id} onClick={()=>hundleClik(project.id)}  className="flex justify-center">
                         <figure className='flex flex-col group relative shadow-lg rounded-lg cursor-pointer  w-full max-w-sm'>
                             <img 
                                 src={project.image ? `http://localhost:3000/${project.image}` : '/default_image.png'} 
