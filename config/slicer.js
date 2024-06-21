@@ -20,7 +20,7 @@ const authSlice = createSlice({
     email: '',
     token: '',
     user: initialUser,
-    isConnect:null,
+    isConnect:false,
     projet:''
   },
   reducers: {
