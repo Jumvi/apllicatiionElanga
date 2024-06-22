@@ -18,7 +18,7 @@ function Ourprojects() {
             try {
                 const response = await axios.get(apiUrl);
                 setProjects([...response.data]);
-                localStorage.setItem('projet',response.data);
+                localStorage.setItem('projet',JSON.stringify(response.data));
                 dispatch(addprojet(response.data));
                 
             } catch (error) {

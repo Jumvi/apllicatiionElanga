@@ -25,7 +25,8 @@ const OtpVerificationPage = () => {
       if (success) {
         setMessage(message);
         localStorage.setItem('token',apiToken);
-        dispatch(checkConnect());       
+        dispatch(checkConnect());
+        localStorage.setItem('isConnect',true) ;      
         Navigate('/');
         // Rediriger l'utilisateur vers une autre page ou afficher un message de succès
       } else {

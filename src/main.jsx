@@ -19,6 +19,12 @@ import Agricole from './pages/agricole.jsx';
 import Agroalimentaire from './pages/agroalimentaire.jsx';
 import { Path } from 'leaflet';
 import ProjectDetails from './pages/projectDetails.jsx';
+import Dashboard from './pages/dashboard.jsx';
+import ShowProfilUser from './pages/showProfilUser.jsx';
+import Users from './pages/users.jsx';
+import UserManagement from './components/userManagement.jsx';
+import ProjectManagement from './components/projectManagement.jsx';
+import Statistics from './components/statistic.jsx';
 
 const router = createBrowserRouter([
   {
@@ -75,6 +81,26 @@ const router = createBrowserRouter([
         element:<ProjectDetails/>
       }
     ]
+  },{
+    path:'/dashbord',
+    element:<Dashboard/>
+  },{
+    path:'show-details-users',
+    children:[
+      {
+        path:':id',
+        element:<ShowProfilUser/>
+      }
+    ]
+  },{
+    path:'/users',
+    element:<UserManagement/>
+  },{
+    path:'/projets-list',
+    element:<ProjectManagement/>
+  },{
+    path:'/statistics',
+    element:<Statistics/>
   }
 
 ])

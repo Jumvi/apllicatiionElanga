@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
     const isConnect =useSelector((state)=>state.auth.isConnect);
-    console.log(isConnect);
     
     return (
         <nav className='flex justify-between border-b shadow p-4 '>
@@ -18,14 +17,14 @@ export default function Header() {
                     <li className='flex  '> <NavLink to='/projects' className='text-blue'><button className='bg-white text-black font-normal'>Projets</button></NavLink></li>
                     
                     {
-                        isConnect ?
+                        isConnect ===  true ?
                         <>
                             <li className='flex  '> <NavLink to='/creationProjets' className='text-blue'><button className='bg-white text-black font-normal'>Créer un projet</button></NavLink></li>
                             <li className='flex  '> <NavLink to='/contribuer' className='text-blue'><button className='bg-white text-black font-normal'>Contribuer</button></NavLink></li>
                         </>
                         : ''
                     }{
-                        !isConnect ?
+                        isConnect === false ?
                         <>
                             <li className='flex  '> <NavLink to='/connexion' className='text-lime-400'><button className='rounded w-40 h-10  bg-white outline outline-offset-0 outline-lime-400'>Se connecter</button></NavLink></li>
                             <li className='flex  items-center'> <NavLink to='creationCompte' className='text-black font-semibold flex  '><button className='bg-lime-400 text-white w-40 h-10 rounded'>Créer un compte</button></NavLink></li>

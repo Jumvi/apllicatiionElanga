@@ -88,7 +88,7 @@ export default function Connexion() {
                 autoComplete='off'
                 className=' font-normal focus:outline-none  rounded-md text-2xl '
               />
-              {errors.email && <p> email is required.</p>}
+              {errors.email && <p className='text-red-500'> email incorrect, Veuillez saisir un email correcte.</p>}
             </label>
             <label className='font-normale border   mb-10 p-3 rounded bg-white self-center w-[25rem] ' >
               <input

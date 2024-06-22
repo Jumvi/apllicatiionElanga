@@ -4,6 +4,31 @@ import { act } from 'react';
 let initialUser = null;
 const storedUser = localStorage.getItem('user');
 
+let initialManageUser = null;
+const storeManageUser = localStorage.getItem('manageUser');
+
+let initProject = null;
+let storeProject = localStorage.getItem('projet');
+
+if(storeProject){
+  try {
+    initProject = JSON.parse(storeProject);
+  } catch (error) {
+    console.error("Error parsing stored user:", error);
+    initProject = null;
+  }
+}
+
+
+if (storeManageUser) {
+  try {
+    initialManageUser = JSON.parse(storeManageUser);
+  } catch (error) {
+    console.error("Error parsing stored user:", error);
+    initialManageUser = null;
+  }
+}
+
 
 if (storedUser) {
   try {
@@ -20,8 +45,9 @@ const authSlice = createSlice({
     email: '',
     token: '',
     user: initialUser,
+    manageUser : initialManageUser ,
     isConnect:false,
-    projet:''
+    projet:initProject
   },
   reducers: {
     setUserMail: (state, action) => {
@@ -54,16 +80,26 @@ const authSlice = createSlice({
       }, 
       addprojet:(state,action)=>{
         state.projet =action.payload;
-        localStorage.setItem('project',action.payload);
+        localStorage.setItem('projet',JSON.stringify(action.payload));
       },
 
       delProject:(state)=>{
         state.projet = '';
-        localStorage.removeItem('project');
+        localStorage.removeItem('projet');
+      },
+      addManagingUser:(state,action)=>{
+        state.manageUser = action.payload;
+        localStorage.setItem('manageUser',JSON.stringify(action.payload));
+      },
+
+      removeManagingUser:(state)=>{
+        state.manageUser = "";
+        localStorage.removeItem('manageUser');
       }
+
     
   },
 });
 
-export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect,addprojet,delProject} = authSlice.actions;
+export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect,addprojet,delProject,addManagingUser,removeManagingUser} = authSlice.actions;
 export default authSlice.reducer;

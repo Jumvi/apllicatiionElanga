@@ -36,6 +36,7 @@ const UserMenu = () => {
         setDropdownOpen(!dropdownOpen);
         dispatch(clearUser());
         dispatch(checkIsDisconnect());
+        localStorage.setItem('isConnect',false);
         handleToggleDropdown()
     };
 
