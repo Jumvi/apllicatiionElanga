@@ -3,20 +3,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { addManagingUser } from '../../config/slicer';
+import { addContribution } from '../../config/slicer';
 
 const ContributionList = () => {
-  const [users, setUsers] = useState([]);
+  const [contribution, setContribution] = useState([]);
   const navigation = useNavigate();
   const dispatch = useDispatch();
 
-  const apiUrl = 'http://localhost:3000/users';
+  const apiUrl = 'http://localhost:3000/contribution';
 
   async function fetchUser(){
         try {
             const response = await axios.get(apiUrl);
-            setUsers(response.data);
-            localStorage.setItem('users',response.data);
+            setContribution(response.data.contribution);
+            localStorage.setItem('contribution',JSON.stringify(response.data.contributionn));
         } catch (error) {
             console.log('Erreur lors de la récupération des utilisateurs', error);
         }
@@ -27,23 +27,23 @@ const ContributionList = () => {
   })
 
   const hundleClick = (id)=>{
-        localStorage.setItem('manageUser',JSON.stringify(users))
-        dispatch(addManagingUser(users));
-        navigation(`/show-details-users/${id}`);
+        localStorage.setItem('contribution',JSON.stringify(contribution))
+        dispatch(addContribution(contribution));
+        navigation(`/contribution/${id}`);
   }
 
   return (
-    <div className="mb-6">
-      <h3 className="text-xl font-bold mb-4 flex flex-col items-center ">Liste des utilisateurs</h3>
+    <div className="mb-6 border boder-green p-5 m-5">
+      <h3 className="text-2xl font-bold mb-4 flex flex-col items-center text-green-600  uppercase">Gestion des contributions</h3>
       <ul className="bg-white shadow-md rounded-lg overflow-hidden">
-        {users.map(user => (
-          <li key={user.id} className="border-b border-gray-200 p-4">
+        {contribution.map(c => (
+          <li key={contribution.id} className="border-b border-gray-200 p-4">
             <div className="flex justify-between items-center">
               <div>
-                <Link onClick={()=>hundleClick(user.id)}>
-                    <h4 className="font-bold">{user.nom}</h4>
+                <Link onClick={()=>hundleClick(c.id)}>
+                    <h4 className="font-bold">montant:{c.montant}</h4>
                 </Link>
-                <p>{user.email}</p>
+                <p>Echéance:{c.echeancePaiement}</p>
               </div>
               <button  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
                 Modifier

@@ -4,6 +4,7 @@ import Sidebar from '../components/sidebare';
 import UserManagement from '../components/userManagement';
 import ProjectManagement from '../components/projectManagement';
 import Statistics from '../components/statistic';
+import ContributionManagement from '../components/contributionManagement';
 
 const Dashboard = () => {
   return (
@@ -17,9 +18,13 @@ const Dashboard = () => {
             </div>
             <div className='border border-gray-8OO shadow m-5  p-5'>
               <div className='flex'>
-                 <Statistics/>
-                <UserManagement/>
+                 <ContributionManagement/>
+                 <UserManagement/>
                 <ProjectManagement/>
+              </div>
+              <div className=' '>
+              <Statistics/>
+
               </div>
             </div>
         </div>

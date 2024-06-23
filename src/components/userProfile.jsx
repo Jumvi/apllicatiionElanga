@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProfileHeader = ({ user }) => {
   return (
@@ -17,6 +18,7 @@ const ProfileHeader = ({ user }) => {
           className="w-24 h-24 rounded-full" 
         />
       </div>
+      
     </header>
   );
 };

@@ -3,16 +3,7 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import { Chart } from 'chart.js/auto';
 import { useSelector } from 'react-redux';
 
-// const dataDoughnut = {
-//   labels: ['Projet 1', 'Projet 2', 'Projet 3'],
-//   datasets: [
-//     {
-//       data: [300, 50, 100],
-//       backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-//       hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-//     },
-//   ],
-// };
+
 
 const dataBar = {
   labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
@@ -61,9 +52,13 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-6">Statistiques</h2>
-      <div className="mb-6">
+    <div className=' flex flex-col' >
+     <h2 className="text-2xl font-bold mb-6 flex flex-col items-center m-5 text-green-600">Statistiques</h2>
+
+
+     <div className=' flex bg-green-100 justify-center items-center '>
+
+      <div className="mb-6 ">
         <h3 className="text-xl mb-4">Répartition des projets</h3>
         <Doughnut
           data={dataDoughnut}
@@ -73,7 +68,7 @@ const Statistics = () => {
             }
           }}
         />
-      </div>
+      </div> 
       <div>
         <h3 className="text-xl mb-4">Investissements mensuels</h3>
         <Bar
@@ -85,6 +80,7 @@ const Statistics = () => {
           }}
         />
       </div>
+     </div>
     </div>
   );
 };

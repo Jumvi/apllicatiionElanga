@@ -16,7 +16,8 @@ const UserList = () => {
         try {
             const response = await axios.get(apiUrl);
             setUsers(response.data);
-            localStorage.setItem('users',response.data);
+            localStorage.setItem('manageUser',JSON.stringify(response.data));
+            dispatch(addManagingUser(response.data))
         } catch (error) {
             console.log('Erreur lors de la récupération des utilisateurs', error);
         }
@@ -34,7 +35,7 @@ const UserList = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="text-xl font-bold mb-4 flex flex-col items-center ">Liste des utilisateurs</h3>
+      <h3 className="text-xl font-bold mb-4 flex flex-col items-center "></h3>
       <ul className="bg-white shadow-md rounded-lg overflow-hidden">
         {users.map(user => (
           <li key={user.id} className="border-b border-gray-200 p-4">

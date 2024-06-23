@@ -25,6 +25,7 @@ import Users from './pages/users.jsx';
 import UserManagement from './components/userManagement.jsx';
 import ProjectManagement from './components/projectManagement.jsx';
 import Statistics from './components/statistic.jsx';
+import ContributionDetails from './pages/contributionDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -101,6 +102,14 @@ const router = createBrowserRouter([
   },{
     path:'/statistics',
     element:<Statistics/>
+  },{
+    path:'contribution',
+    children:[
+      {
+        path:':id',
+        element:<ContributionDetails/>
+      }
+    ]
   }
 
 ])

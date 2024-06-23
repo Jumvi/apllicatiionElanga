@@ -1,8 +1,11 @@
 import React from 'react'
+import ContributionList from './contributionListe';
 
 const ContributionManagement = () => {
   return (
-    <div>C</div>
+    <div>
+      <ContributionList/>
+    </div>
   )
 }
 

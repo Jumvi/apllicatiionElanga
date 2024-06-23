@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { NavLink, json } from 'react-router-dom';
+import { Link, NavLink, json } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { useSelector,useDispatch } from 'react-redux';
 import { saveUser,clearUser } from '../../config/slicer';
@@ -48,10 +48,18 @@ const UserMenu = () => {
             <>
                 <span>{user.nom}</span>
                 <img src={user.profilImage ? `http://localhost:3000/${user.profilImage}` : '/default_image.png'} alt="" className="w-10 h-10 rounded-full" />
+                {
+                    user.role === "admin"? 
+                        <>
+                        <Link to='/dashbord'>Dashboard</Link>
+                        </>
+        : ''
+      }
             </>
         ) : (
             <>
                  <FaUserCircle className="w-6 h-6" />
+
             </>
         )
     ) : (

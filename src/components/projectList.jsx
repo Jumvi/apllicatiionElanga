@@ -33,7 +33,6 @@ const ProjectList = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="text-xl font-bold mb-4 flex flex-col items-center ">Liste des projets</h3>
       <ul className="bg-white shadow-md rounded-lg overflow-hidden">
         {projects.map(p => (
           <li key={p.id} className="border-b border-gray-200 p-4">

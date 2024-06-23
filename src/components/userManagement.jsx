@@ -8,7 +8,7 @@ const UserManagement = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   return (
-    <div className='bg-green-100 p-5'>
+    <div className='bg-green-100 p-5 m-5'>
       <h2 className="text-2xl font-bold mb-6 text-green-600 uppercase ">Gestion des utilisateurs</h2>
       < UserList/>
       <AddUser />

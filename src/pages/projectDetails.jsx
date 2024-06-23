@@ -50,9 +50,10 @@ const ProjectDetails = () => {
         <h2 className="text-xl font-bold mb-4">details du project</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           
-            <div className="bg-gray-200 p-4 rounded shadow">
+            <div className="bg-gray-200 p-4 rounded shadow bg-green-100 flex flex-col items-center">
               <h3 className="text-lg font-semibold">{projet.title}</h3>
-              <p className="text-gray-700 mt-2">{projet.description}</p>
+              <p className="text-green-700 mt-2 text-2xl ">{projet.description}</p>
+              <p className="text-green-700 mt-2 text-2xl ">Numéro du project: {projet.id}</p>
             </div>
          
         </div>

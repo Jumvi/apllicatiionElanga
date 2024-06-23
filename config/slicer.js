@@ -10,6 +10,19 @@ const storeManageUser = localStorage.getItem('manageUser');
 let initProject = null;
 let storeProject = localStorage.getItem('projet');
 
+let initialContribution = null;
+let storeContribution = localStorage.getItem('ontribution');
+
+
+if (storeContribution) {
+  try {
+    initialContribution = JSON.parse(storeContribution);
+  } catch (error) {
+    console.error("Error parsing stored user:", error);
+    initialContribution = null;
+  }
+}
+
 if(storeProject){
   try {
     initProject = JSON.parse(storeProject);
@@ -47,7 +60,8 @@ const authSlice = createSlice({
     user: initialUser,
     manageUser : initialManageUser ,
     isConnect:false,
-    projet:initProject
+    projet:initProject,
+    contribution: initialContribution
   },
   reducers: {
     setUserMail: (state, action) => {
@@ -95,11 +109,15 @@ const authSlice = createSlice({
       removeManagingUser:(state)=>{
         state.manageUser = "";
         localStorage.removeItem('manageUser');
-      }
+      },
+        addContribution :(state,action)=>{
+          state.contribution = action.payload;
+          localStorage.setItem('contribution',JSON.stringify(action.payload))
+        }
 
     
   },
 });
 
-export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect,addprojet,delProject,addManagingUser,removeManagingUser} = authSlice.actions;
+export const { setUserMail, setToken, clearToken, saveUser, clearUser,checkConnect,checkIsDisconnect,addprojet,delProject,addManagingUser,removeManagingUser,addContribution} = authSlice.actions;
 export default authSlice.reducer;
