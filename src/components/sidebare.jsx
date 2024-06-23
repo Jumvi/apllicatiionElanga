@@ -25,7 +25,7 @@ const Sidebar = () => {
         </li>
         <li className="mb-6 flex items-center">
           <FaDonate className="mr-2 text-white" />
-          <Link  className="text-lg text-white hover:text-blue-600">
+          <Link to='/contribution' className="text-lg text-white hover:text-blue-600">
             Gestion des contributions
           </Link>
         </li>

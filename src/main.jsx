@@ -104,6 +104,7 @@ const router = createBrowserRouter([
     element:<Statistics/>
   },{
     path:'contribution',
+    element:<ContributionDetails/>,
     children:[
       {
         path:':id',
