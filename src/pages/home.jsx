@@ -9,7 +9,7 @@ import Footer from '../components/footer';
 export default function Home() {
   return (
     <main className='w-full'>
-      <div className='w-full'>
+      <div className=''>
         <Header/>
       </div>
       <div>
