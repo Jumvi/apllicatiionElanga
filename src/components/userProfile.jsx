@@ -7,7 +7,7 @@ const ProfileHeader = ({ user }) => {
       <div 
         className="flex flex-col items-center h-[35rem] p-4 bg-white shadow rounded"
         style={{ 
-          backgroundImage: `url(http://localhost:3000/${user.profilImage})`,
+          backgroundImage: `url(https://www.shutterstock.com/shutterstock/photos/2331093205/display_1500/stock-photo-a-male-farmer-holding-tablet-working-in-agricultural-field-in-corn-field-inspecting-agricultural-2331093205.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

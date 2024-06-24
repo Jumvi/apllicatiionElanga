@@ -32,12 +32,16 @@ function Profil() {
           </div>
         </div>
         <section className="mt-8 bg-white shadow rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-4">Liste de mes projets</h2>
+          <h2 className="text-xl font-bold mb-4"></h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <div  className="bg-gray-200 p-4 rounded shadow">
-                <h3 className="text-lg font-semibold">{user.role}</h3>
-                <h3 className="text-lg font-semibold">{user.createdAt}</h3>
-                <p className="text-gray-700 mt-2">{user.localisation ? user.localisation:null}</p>
+              <div  className="bg-green-100 p-4 rounded shadow flex justify-between">
+                <h3 className="text-lg font-semibold text-green-600"> Role:{user.role}</h3>
+              </div>
+              <div  className="bg-green-100 p-4 rounded shadow flex justify-between">
+                <h3 className="text-lg font-semibold text-green-600">Date de Création du compte :{user.createdAt}</h3>
+              </div>
+              <div  className="bg-green-100 p-4 rounded shadow flex justify-between">
+                <p className="text-gray-700 mt-2 text-green-600 font-bold">Adresse:{user.localisation ? user.localisation:null}</p>
               </div>
           </div>
         </section>

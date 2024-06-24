@@ -40,6 +40,8 @@ const ContributionList = () => {
           <li key={contribution.id} className="border-b border-gray-200 p-4">
             <div className="flex justify-between items-center">
               <div>
+              <p>Titre projet</p>
+
                 <Link onClick={()=>hundleClick(c.id)}>
                     <h4 className="font-bold">montant:{c.montant}</h4>
                 </Link>
