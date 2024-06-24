@@ -47,16 +47,6 @@ function Footer() {
           <li>Consolider les discussions entre parties</li>
           <li>Consolider le développement du secteur vert</li>
         </ul>
-        <h2 className='text-white font-bold mt-10'>MENU</h2>
-        <nav>
-          <ul className='text-white space-y-2 text-center'>
-            <li><a href="#" className='hover:text-green-500'>Accueil</a></li>
-            <li><a href="#" className='hover:text-green-500'>À propos</a></li>
-            <li><a href="#" className='hover:text-green-500'>Projets</a></li>
-            <li><a href="#" className='hover:text-green-500'>Contact</a></li>
-            <li><a href="#" className='hover:text-green-500'>FAQ</a></li>
-          </ul>
-        </nav>
       </div>
     </footer>
   );
