@@ -7,6 +7,8 @@ import { addManagingUser } from '../../config/slicer';
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState(projects);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,6 +28,14 @@ const ProjectList = () => {
     fetchProjects();
   }, []);
 
+  useEffect(() => {
+    setFilteredProjects(
+      projects.filter((projet) =>
+        projet.titre.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm, projects]);
+
   const handleClick = (id) => {
     dispatch(addManagingUser('projet', projects));
     navigate(`/details-project/${id}`);
@@ -34,8 +44,15 @@ const ProjectList = () => {
   return (
     <div className="mb-6 p-5 m-5 border border-green-600">
       <div className="bg-white shadow-md rounded-lg overflow-hidden max-h-[50vh] overflow-y-auto">
+      <input
+          type="text"
+          placeholder="Rechercher un projet"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="p-2 border border-green-600 rounded-md"
+        />
         <ul>
-          {projects.map(p => (
+          {filteredProjects.map(p => (
             <li key={p.id} className="border-b border-gray-200 p-4">
               <div className="flex justify-between items-center">
                 <div>
