@@ -7,7 +7,7 @@ import { addManagingUser } from '../../config/slicer';
 const ContributionDetails = () => {
   const [contributions, setContributions] = useState([]);
   const users = useSelector((state) => state.auth.manageUser);
-  const projets = useSelector((state) => state.auth.projet); // Corrected to "projets"
+  const projets = useSelector((state) => state.auth.projet); 
   const navigation = useNavigate();
   const dispatch = useDispatch();
 

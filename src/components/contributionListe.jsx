@@ -1,13 +1,14 @@
 // src/components/UserList.js
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { addContribution } from '../../config/slicer';
 
 const ContributionList = () => {
   const [contributions, setContributions] = useState([]);
   const [projectTile,setProjectTitle] = useState('');
+  const projects = useSelector((state)=>state.auth.projet);
   const navigation = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,11 +41,13 @@ const ContributionList = () => {
       <h3 className="text-2xl font-bold mb-4 flex flex-col items-center text-green-600 uppercase">Gestion des contributions</h3>
       <div className="bg-white shadow-md rounded-lg overflow-hidden max-h-[50vh] overflow-y-auto">
         <ul>
-          {contributions.map(c => (
+          {contributions.map(c => {
+            const projet = projects.find(p=>p.id === c.projectId);
+         return(
             <li key={c.id} className="border-b border-gray-200 p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <p>Titre projet{projectTile}</p>
+                  <p>Titre projet :{projet? projet.titre :"Inconnu"}</p>
                   <Link onClick={() => handleClick(c.id)}>
                       <h4 className="font-bold">Montant: {c.montant}</h4>
                   </Link>
@@ -55,7 +58,7 @@ const ContributionList = () => {
                 </button>
               </div>
             </li>
-          ))}
+          );})}
         </ul>
       </div>
     </div>
