@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import pik from '../assets/projet.jpg';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreationProjet() {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const user = JSON.parse(localStorage.getItem('user'));
+  const navigate = useNavigate();
 
   
   const api = 'http://localhost:3000/projects';
@@ -38,6 +40,7 @@ export default function CreationProjet() {
 
       localStorage.setItem('projet', projet);
       reset()
+      navigate('/')
       
     } catch (error) {
       console.error('Error submitting form:', error);
