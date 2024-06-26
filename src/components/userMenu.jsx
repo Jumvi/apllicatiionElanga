@@ -51,7 +51,7 @@ const UserMenu = () => {
                 {
                     user.role === "admin"? 
                         <>
-                        <Link to='/dashbord'>Dashboard</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
                         </>
         : ''
       }
