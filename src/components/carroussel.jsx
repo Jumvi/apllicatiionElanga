@@ -1,11 +1,11 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
 import { useNavigate } from 'react-router-dom';
+import { FreeMode, Navigation, Pagination } from 'swiper/modules';
 
 export default function Carroussel({ project }) {
     const navigate = useNavigate();
@@ -39,18 +39,18 @@ export default function Carroussel({ project }) {
                 navigation={true}
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
-                modules={[FreeMode, Pagination, Navigation]}
+                modules={[Navigation, Pagination, FreeMode]}
                 className="mySwiper"
             >
                 {project.map((project) => (
-                    <SwiperSlide key={project.id} onClick={() => handleClick(project.id)} className="flex justify-center">
-                        <figure className='group relative shadow-lg rounded-lg cursor-pointer w-full max-w-sm overflow-hidden transition-transform transform hover:scale-105'>
+                    <SwiperSlide key={project.id} className="flex justify-center">
+                        <div className='group relative shadow-lg rounded-lg cursor-pointer max-w-sm w-full overflow-hidden transition-transform transform hover:scale-105'>
                             <img
                                 src={project.image ? `http://localhost:3000/${project.image}` : '/default_image.png'}
                                 alt="project"
                                 className='w-full h-56 object-cover rounded-t-lg'
                             />
-                            <figcaption className='bg-white p-6 flex flex-col'>
+                            <div className='bg-white p-6 flex flex-col'>
                                 <h3 className='text-xl font-bold text-green-600 group-hover:text-green-800 mb-2'>{project.titre}</h3>
                                 <div className='text-gray-700 mb-4'>
                                     <p>Budget réalisation : <span className='font-semibold'>{project.budget} $</span></p>
@@ -58,8 +58,8 @@ export default function Carroussel({ project }) {
                                     <p>Temps de récolte : <span className='font-semibold'>{project.duree} mois</span></p>
                                     <p>Réalisation du projet : <span className='font-semibold'>{project.realisation}</span></p>
                                 </div>
-                            </figcaption>
-                        </figure>
+                            </div>
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
