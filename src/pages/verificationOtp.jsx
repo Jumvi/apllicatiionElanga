@@ -3,7 +3,7 @@ import { useForm} from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
-import { checkConnect } from '../../config/slicer';
+import { checkConnect, setToken } from '../../config/slicer';
 
 
 const OtpVerificationPage = () => {
@@ -24,7 +24,8 @@ const OtpVerificationPage = () => {
 
       if (success) {
           setMessage(message);
-          localStorage.setItem('token',apiToken);
+          localStorage.setItem('token',JSON.stringify(apiToken));
+          dispatch(setToken(apiToken))
           dispatch(checkConnect());
           localStorage.setItem('isConnect',true) ;      
           Navigate('/');
