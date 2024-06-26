@@ -14,6 +14,19 @@ let initialContribution = null;
 let storeContribution = localStorage.getItem('ontribution');
 
 
+let initToken = null;
+const storeToken = localStorage.getItem('token');
+
+if (storeToken) {
+  try {
+    initToken = JSON.parse(storeToken);
+  } catch (error) {
+    console.log("Error parsing stored token:",error);
+    initToken = null;
+  }
+}
+
+
 if (storeContribution) {
   try {
     initialContribution = JSON.parse(storeContribution);
@@ -56,7 +69,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     email: '',
-    token: '',
+    token: initToken,
     user: initialUser,
     manageUser : initialManageUser ,
     isConnect:false,
