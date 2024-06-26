@@ -4,10 +4,15 @@ import UserManagement from '../components/userManagement';
 import ProjectManagement from '../components/projectManagement';
 import ContributionManagement from '../components/contributionManagement';
 import Statistics from '../components/statistic';
+import HeaderDashboard from '../components/headerDasbord';
 
 const Dashboard = () => {
   return (
-    <div className='flex justify-between'>
+    <div>
+      <div>
+        <HeaderDashboard/>
+      </div>
+      <div className='flex justify-between'>
       <div>
         <Sidebar/>
       </div>
@@ -21,6 +26,7 @@ const Dashboard = () => {
           <Statistics/>
         </div>
       </div>
+    </div>
     </div>
   )
 }
