@@ -12,6 +12,20 @@ const Statistics = () => {
 
   const dataDoughnut = useMemo(() => filteredProjects.map((p) => ({ name: p.titre, value: p.budget })), [filteredProjects]);
 
+  const COLORS = [
+    '#FF6384', 
+    '#36A2EB', 
+    '#FFCE56', 
+    '#4BC0C0', 
+    '#9966FF', 
+    '#FF9F40', 
+    '#FFCD94', 
+    '#A2EB36', 
+    '#66FF66', 
+    '#FF66B2'  
+  ];
+  
+
 
   useEffect(() => {
     setFilteredProjects(
@@ -37,7 +51,7 @@ const Statistics = () => {
         <div className='flex justify-center gap-10'>
         <div className="mb-10 p-10 ">
           <h3 className="text-xl mb-4 text-green-600">Répartition des projets par budgets</h3>
-          <PieChart width={400} height={400}>
+          <PieChart width={600} height={400}>
             <Pie
               data={dataDoughnut}
               dataKey="value"
@@ -48,7 +62,7 @@ const Statistics = () => {
               label={(entry) => `${entry.name}: ${entry.value}`}
             >
               {dataDoughnut.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill || '#8884d8'} />
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip />
