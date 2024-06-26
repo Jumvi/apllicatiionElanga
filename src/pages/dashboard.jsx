@@ -1,35 +1,28 @@
 import React from 'react'
-import HeaderDashboard from '../components/headerDasbord';
 import Sidebar from '../components/sidebare';
 import UserManagement from '../components/userManagement';
 import ProjectManagement from '../components/projectManagement';
-import Statistics from '../components/statistic';
 import ContributionManagement from '../components/contributionManagement';
+import Statistics from '../components/statistic';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='flex justify-between'>
+      <div>
+        <Sidebar/>
+      </div>
+      <div>
+        <div className='flex gap-2'>
+          <ProjectManagement/> 
+          <UserManagement/>
+          <ContributionManagement/>
+        </div>
         <div>
-            <HeaderDashboard/>
+          <Statistics/>
         </div>
-        <div className='flex justify-between'>
-            <div>
-              <Sidebar/>
-            </div>
-            <div className='border border-gray-8OO shadow m-5  p-5'>
-              <div className='flex'>
-                 <ContributionManagement/>
-                 <UserManagement/>
-                <ProjectManagement/>
-              </div>
-              <div className=' '>
-              <Statistics/>
-
-              </div>
-            </div>
-        </div>
+      </div>
     </div>
   )
 }
 
-export default Dashboard;
+export default Dashboard ;

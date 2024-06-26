@@ -50,7 +50,7 @@ const UserList = () => {
           placeholder="Rechercher un projet"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border border-green-600 rounded-md"
+          className="p-2 border border-green-600 rounded-md mb-2 "
         />
       <ul className="bg-white shadow-md rounded-lg overflow-hidden ">
         {filterUsers.map(user => (
