@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 export default function Header() {
   const isConnect = useSelector((state) => state.auth.isConnect);
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.monToken;
 
   return (
     <nav className="flex flex-wrap justify-between items-center border-b shadow p-4">
@@ -23,7 +25,7 @@ export default function Header() {
             </NavLink>
           </li>
 
-          {isConnect && (
+          {token && (
             <>
               <li>
                 <NavLink to="/creationProjets" className="text-blue">
@@ -38,7 +40,7 @@ export default function Header() {
             </>
           )}
 
-          {!isConnect && (
+          {!token && (
             <>
               <li>
                 <NavLink to="/connexion" className="text-lime-400">
