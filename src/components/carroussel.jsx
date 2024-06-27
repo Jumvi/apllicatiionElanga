@@ -4,7 +4,7 @@ import 'swiper/swiper-bundle.css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/free-mode';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FreeMode, Navigation, Pagination } from 'swiper/modules';
 
 export default function Carroussel({ project }) {
@@ -44,7 +44,8 @@ export default function Carroussel({ project }) {
             >
                 {project.map((project) => (
                     <SwiperSlide key={project.id} className="flex justify-center">
-                        <div className='group relative shadow-lg rounded-lg cursor-pointer max-w-sm w-full overflow-hidden transition-transform transform hover:scale-105'>
+                       <Link to={`/details-project/${project.id}`}>
+                       <div className='group relative shadow-lg rounded-lg cursor-pointer max-w-sm w-full overflow-hidden transition-transform transform hover:scale-105'>
                             <img
                                 src={project.image ? `http://localhost:3000/${project.image}` : '/default_image.png'}
                                 alt="project"
@@ -60,6 +61,7 @@ export default function Carroussel({ project }) {
                                 </div>
                             </div>
                         </div>
+                       </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
