@@ -81,7 +81,7 @@ const router = createBrowserRouter([
     element: <Agroalimentaire />
   },
   {
-    path: 'details-project/:id',
+    path: '/details-project/:id',
     element: <ProtectedRoute element={<ProjectDetails />} />
   },
   {
