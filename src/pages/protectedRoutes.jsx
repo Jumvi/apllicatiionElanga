@@ -4,13 +4,16 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ element }) => {
-  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.monToken;
+  console.log(user);
   return token ? element : <Navigate to="/connexion" />;
 };
 
 const AdminRoute = ({ element }) => {
-  const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.monToken;
+  
   console.log('token',token, 'user:',user);
   const isAdmin = user && user.role === 'admin';
   return token && isAdmin ? element : <Navigate to="/connexion" />;
