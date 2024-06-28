@@ -33,8 +33,8 @@ const Users = () => {
   }
 
   return (
-    <div className="mb-6">
-      <h3 className="text-xl font-bold mb-4 flex flex-col items-center ">Liste des utilisateurs</h3>
+    <div className="mb-6 bg-green-100 p-10 shadow">
+      <h3 className="text-xl font-bold mb-4 flex flex-col items-center text-green-600 uppercase">Liste des utilisateurs</h3>
       <ul className="bg-white shadow-md rounded-lg overflow-hidden">
         {users.map(user => (
           <li key={user.id} className="border-b border-gray-200 p-4">

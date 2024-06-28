@@ -26,6 +26,7 @@ import ProjectManagement from './components/projectManagement.jsx';
 import Statistics from './components/statistic.jsx';
 import ContributionDetails from './pages/contributionDetails.jsx';
 import { AdminRoute, ProtectedRoute } from './pages/protectedRoutes.jsx';
+import ContributionManagement from './components/contributionManagement.jsx';
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,9 @@ const router = createBrowserRouter([
   {
     path: 'contribution/:id',
     element: <ProtectedRoute element={<ContributionDetails />} />
+  },{
+    path:'/contribution',
+    element: <AdminRoute element={<ContributionManagement />} />
   }
 ]);
 

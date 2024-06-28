@@ -5,6 +5,9 @@ import ProjectManagement from '../components/projectManagement';
 import ContributionManagement from '../components/contributionManagement';
 import Statistics from '../components/statistic';
 import HeaderDashboard from '../components/headerDasbord';
+import ProjectList from '../components/projectList';
+import ContributionList from '../components/contributionListe';
+import Users from './users';
 
 const Dashboard = () => {
   return (
@@ -16,11 +19,11 @@ const Dashboard = () => {
       <div>
         <Sidebar/>
       </div>
-      <div>
+      <div className='w-[80%]'>
         <div className='flex gap-2'>
-          <ProjectManagement/> 
-          <UserManagement/>
-          <ContributionManagement/>
+          <ProjectList/>
+          <Users/>
+          <ContributionList/>
         </div>
         <div>
           <Statistics/>
