@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ELaNGA from '../assets/logoEL.png';
 import UserMenu from './userMenu';
 import { useSelector } from 'react-redux';
 
 export default function Header() {
-  const isConnect = useSelector((state) => state.auth.isConnect);
-  const user = JSON.parse(localStorage.getItem('user'));
-  const token = user.monToken;
+  const isConnect = JSON.parse(localStorage.getItem('isConnect'));
 
   return (
     <nav className="flex flex-wrap justify-between items-center border-b shadow p-4">
@@ -25,7 +23,7 @@ export default function Header() {
             </NavLink>
           </li>
 
-          {token && (
+          {isConnect ? (
             <>
               <li>
                 <NavLink to="/creationProjets" className="text-blue">
@@ -38,9 +36,7 @@ export default function Header() {
                 </NavLink>
               </li>
             </>
-          )}
-
-          {!token && (
+          ) : (
             <>
               <li>
                 <NavLink to="/connexion" className="text-lime-400">
