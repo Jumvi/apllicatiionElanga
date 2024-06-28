@@ -99,11 +99,11 @@ const authSlice = createSlice({
 
     checkConnect:(state)=>{
       state.isConnect = true;
-      localStorage.setItem('isConnect',true);
+      localStorage.setItem('isConnect',JSON.stringify(true));
     },
       checkIsDisconnect:(state)=>{
         state.isConnect = false;
-        localStorage.setItem('isConnect',false)
+        localStorage.setItem('isConnect',JSON.stringify(false))
       }, 
       addprojet:(state,action)=>{
         state.projet =action.payload;
