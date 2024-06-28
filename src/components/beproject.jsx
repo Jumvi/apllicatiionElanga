@@ -11,8 +11,8 @@ export default function Beproject() {
         <h2 className="text-xl md:text-2xl font-bold self-center">
           Découvrez différents projets retenus pour vous
         </h2>
-        <p className="text-base md:text-lg">grâce au concours de notre</p>
-        <p className="text-base md:text-lg">Equipe d'étude</p>
+        <p className="text-base text-xl md:text-lg font-bold md:text-2xl">grâce au concours de notre</p>
+        <p className="text-base text-xl md:text-lg font-bold md:text-2xl">Equipe d'étude</p>
       </div>
       <Carroussel project={project} />
     </section>
