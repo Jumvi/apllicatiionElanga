@@ -9,6 +9,7 @@ const ProjectList = () => {
   const [projects, setProjects] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProjects, setFilteredProjects] = useState(projects);
+  const users = JSON.parse(localStorage.getItem('manageUser'));
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,6 +27,7 @@ const ProjectList = () => {
 
   useEffect(() => {
     fetchProjects();
+    
   }, []);
 
   useEffect(() => {
@@ -52,21 +54,27 @@ const ProjectList = () => {
           className="p-2 border border-green-600 rounded-md"
         />
         <ul>
-          {filteredProjects.map(p => (
-            <li key={p.id} className="border-b border-gray-200 p-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <Link onClick={() => handleClick(p.id)}>
-                    <h4 className="font-bold">{p.titre}</h4>
-                  </Link>
-                  <p>{p.categorie}</p>
-                </div>
-                <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
-                  Modifier
-                </button>
-              </div>
-            </li>
-          ))}
+        {filteredProjects.map((p) => {
+            const user = users.find((u) => u.id === p.userId);
+
+            return (
+                <li key={p.id} className="border-b border-gray-200 p-4">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <Link onClick={() => handleClick(p.id)}>
+                          <h4 className="font-bold">{p.titre}</h4>
+                        </Link>
+                        <p>{p.categorie}</p>
+                         {user && <p>Créé par: {user.nom}</p>} 
+                      </div>
+                      <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                        Modifier
+                      </button>
+                    </div>
+                </li>
+              );
+            })}
+
         </ul>
       </div>
     </div>
