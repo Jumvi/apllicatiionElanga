@@ -47,7 +47,7 @@ export default function Contribuer() {
       if (success !== true) {
         return alert('Erreur lors de la contribution');
       }
-      navigation('/');
+      navigation('/transaction');
     } catch (error) {
       console.error('Erreur lors de la contribution:', error);
       alert('Erreur lors de la contribution');

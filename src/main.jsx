@@ -27,6 +27,7 @@ import Statistics from './components/statistic.jsx';
 import ContributionDetails from './pages/contributionDetails.jsx';
 import { AdminRoute, ProtectedRoute } from './pages/protectedRoutes.jsx';
 import ContributionManagement from './components/contributionManagement.jsx';
+import Paiement from './components/paiement.jsx';
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,9 @@ const router = createBrowserRouter([
   },{
     path:'/contribution',
     element: <AdminRoute element={<ContributionManagement />} />
+  },{
+    path:'transaction',
+    element:<ProtectedRoute element={<Paiement />} />
   }
 ]);
 

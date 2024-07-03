@@ -30,7 +30,7 @@ export default function Header() {
       <NavLink to="/contribuer" className="text-blue">
         <button className="bg-white text-black font-normal">Contribuer</button>
       </NavLink>
-      <NavLink to="/creer-projet" className="text-blue">
+      <NavLink to="/creationProjets" className="text-blue">
         <button className="bg-white text-black font-normal">Créer un projet</button>
       </NavLink>
     </>
